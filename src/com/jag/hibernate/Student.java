@@ -4,8 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +15,16 @@ public class Student {
 	private int student_id;
 	private String student_name;
 	
+	@ManyToOne(cascade=CascadeType.ALL)
+	private StudentAddress studentAddress;
+	
+	
+	public StudentAddress getStudentAddress() {
+		return studentAddress;
+	}
+	public void setStudentAddress(StudentAddress studentAddress) {
+		this.studentAddress = studentAddress;
+	}
 	public int getStudent_id() {
 		return student_id;
 	}

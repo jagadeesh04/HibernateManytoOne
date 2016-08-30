@@ -20,14 +20,17 @@ public class Test {
 		student2.setStudent_name("Ram");
 		student2.setStudentAddress(studentAddress);
 		
+		(studentAddress.getStudents()).add(student1);
+		(studentAddress.getStudents()).add(student2);
+		
 		SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		
 		Session session = sessionFactory.openSession();
 		
 		session.beginTransaction();
 		
-		session.save(student1);
-		session.save(student2);
+		session.save(studentAddress);
+		
 		
 		session.getTransaction().commit();
 		session.close();

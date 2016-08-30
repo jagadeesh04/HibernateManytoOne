@@ -1,8 +1,13 @@
 package com.jag.hibernate;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +19,17 @@ public class StudentAddress {
 	private int address_id;
 	
 	private String address_detail;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "studentAddress")
+	private Set<Student> students = new HashSet<Student>(0);
+	
+	public Set<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(Set<Student> students) {
+		this.students = students;
+	}
 
 	public int getAddress_id() {
 		return address_id;
